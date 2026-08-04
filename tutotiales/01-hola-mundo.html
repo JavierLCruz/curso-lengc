@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 1 - Hola Mundo | Curso de C</title>
+    <!-- Subimos un nivel (../) para encontrar la carpeta css -->
+    <link rel="stylesheet" href="../css/estilo-terminal.css">
+</head>
+<body>
+
+    <p><a href="../index.html">← Volver al Índice</a></p>
+
+    <h1>Capítulo 1: Tu primer "Hola Mundo"</h1>
+    <p>Todo viaje en la programación en C comienza con la inclusión de las librerías estándar y la función <code>main()</code>.</p>
+    <p>Para crear nuestro primer archivo, abriremos nuestro editor desde la terminal ejecutando <code>nano hola_mundo.c</code> y escribiremos el siguiente código:</p>
+
+    <!-- La ventana de la terminal -->
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">nano hola_mundo.c</span>
+        </div>
+        <div class="terminal-body">
+            <!-- El script insertará las letras dentro del span "typing-text" -->
+            <span id="typing-text"></span><span class="cursor">|</span>
+        </div>
+    </div>
+
+    <!-- AQUÍ ESCRIBES TU CÓDIGO NORMALMENTE. 
+         Está oculto (display: none), el usuario no lo ve directamente, 
+         pero el JavaScript lo lee de aquí para hacer el efecto. -->
+    <pre id="codigo-oculto" style="display: none;">
+#include <stdio.h>
+
+int main() {
+    printf("¡Hola, terminal Linux desde C!\n");
+    return 0;
+}
+    </pre>
+
+    <h2>¿Qué acaba de pasar?</h2>
+    <ul>
+        <li><code>#include &lt;stdio.h&gt;</code>: Importa las herramientas para Entrada y Salida (Standard Input/Output).</li>
+        <li><code>int main()</code>: Es el punto de arranque de cualquier programa en C.</li>
+    </ul>
+
+    <!-- Subimos un nivel (../) para encontrar la carpeta js -->
+    <script src="../js/maquina-escribir.js"></script>
+
+</body>
+</html>

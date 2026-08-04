@@ -1,0 +1,10 @@
+tu-usuario.github.io/
+├── index.html                 # Tu página principal (El índice o menú)
+├── css/
+│   └── estilo-terminal.css    # Todo el diseño visual va aquí
+├── js/
+│   └── maquina-escribir.js    # El "motor" que hace el efecto de escritura
+└── tutoriales/
+    ├── 01-hola-mundo.html     # Capítulo 1
+    ├── 02-variables.html      # Capítulo 2
+    └── 03-punteros.html       # Capítulo 3

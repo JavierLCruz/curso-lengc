@@ -1,0 +1,79 @@
+/* --- Estilos Generales (Tipo Arch Linux) --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #1793d1; /* Azul Arch Linux */
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 5px;
+}
+
+a { color: #1793d1; text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { font-family: monospace; background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
+.header { margin-bottom: 40px; font-size: 0.9em; color: #666; }
+
+/* --- Estilos de la Terminal --- */
+.terminal-window {
+    background-color: #2e3440; /* Gris oscuro nórdico */
+    color: #d8dee9; /* Texto claro */
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+    margin: 30px 0;
+}
+
+.terminal-header {
+    background-color: #3b4252;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+.red { background-color: #bf616a; }
+.yellow { background-color: #ebcb8b; }
+.green { background-color: #a3be8c; }
+
+.terminal-title {
+    color: #88c0d0;
+    font-size: 0.9em;
+    margin-left: 10px;
+}
+
+.terminal-body {
+    padding: 20px;
+    line-height: 1.5;
+    font-size: 0.95em;
+    /* Esto respeta los saltos de línea y espacios del código C */
+    white-space: pre-wrap; 
+}
+
+.prompt { color: #81a1c1; font-weight: bold; }
+
+.cursor {
+    display: inline-block;
+    background-color: #d8dee9;
+    color: #d8dee9;
+    width: 8px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
