@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git - Instalación y Configuración</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      line-height: 1.7;
+    }
+
+    h1 {
+      color: #7ee787;
+      font-size: 1.6rem;
+      border-bottom: 1px solid #21262d;
+      padding-bottom: 0.5rem;
+    }
+
+    h2 {
+      color: #58a6ff;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    h3 {
+      color: #8b949e;
+      font-size: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    p { margin: 0.8rem 0; }
+
+    /* ── Terminal ─────────────────────────────── */
+    .terminal-window {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .terminal-header {
+      background: #21262d;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot.red    { background: #ff5f57; }
+    .dot.yellow { background: #febc2e; }
+    .dot.green  { background: #28c840; }
+
+    .terminal-title {
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 0.75rem;
+      color: #8b949e;
+    }
+
+    .terminal-body {
+      padding: 12px 16px;
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+    }
+
+    .prompt { color: #7ee787; }
+    .cmd    { color: #c9d1d9; }
+    .out    { color: #8b949e; }
+    .comment { color: #6e7681; font-style: italic; }
+
+    /* ── Destacados ───────────────────────────── */
+    code {
+      background: #21262d;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85em;
+      color: #ffa657;
+    }
+
+    .nota {
+      border-left: 3px solid #58a6ff;
+      padding: 0.5rem 1rem;
+      margin: 1rem 0;
+      background: #161b22;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #6e7681;
+    }
+
+    footer a { color: #58a6ff; }
+  </style>
+</head>
+<body>
+
+  <h1>Instalación en Linux</h1>
+
+  <p>En distribuciones basadas en Debian/Ubuntu:</p>
+
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="terminal-title">bash</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="prompt">$</span> <span class="cmd">sudo apt install git</span></div>
+    </div>
+  </div>
+
+  <h2>Verificación de la instalación</h2>
+
+  <p>Sea cual sea tu sistema operativo, abre la terminal y ejecuta:</p>
+
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="terminal-title">bash</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="prompt">$</span> <span class="cmd">git --version</span></div>
+      <div><span class="out">git version 2.43.0</span></div>
+    </div>
+  </div>
+
+  <p>Si ves un número de versión, Git está instalado. El número exacto no importa mucho, cualquier versión reciente funciona perfectamente.</p>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h1>Configuración inicial</h1>
+
+  <p>Antes de hacer nada con Git, necesitas decirle quién eres. Cada commit quedará firmado con tu nombre y tu email, así que configúralos correctamente.</p>
+
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="terminal-title">bash</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="prompt">$</span> <span class="cmd">git config --global user.name "Linus Torvals"</span></div>
+      <div><span class="prompt">$</span> <span class="cmd">git config --global user.email "linus@mail.net"</span></div>
+    </div>
+  </div>
+
+  <p>Cambia <code>"Linus Torvals"</code> y el email por tus datos reales. Usa el mismo email que usarás en GitHub, GitLab o la plataforma que elijas.</p>
+
+  <div class="nota">
+    El flag <code>--global</code> significa que esta configuración aplica a todos los repositorios de la máquina. Si algún día necesitas usar un email diferente en un proyecto específico, puedes ejecutar el mismo comando sin <code>--global</code> dentro de ese repositorio.
+  </div>
+
+  <h2>Configuraciones extra recomendadas</h2>
+
+  <h3>Rama por defecto: main</h3>
+
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="terminal-title">bash</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="prompt">$</span> <span class="cmd">git config --global init.defaultBranch main</span></div>
+    </div>
+  </div>
+
+  <p>Cuando creas un repositorio nuevo, Git necesita un nombre para la rama principal. Históricamente se usaba <code>"master"</code>, pero el estándar moderno es <code>"main"</code>. GitLab, GitHub y la mayoría de plataformas ya usan <code>"main"</code> por defecto.</p>
+
+  <h3>Editor por defecto: nano</h3>
+
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="terminal-title">bash</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="comment"># nano viene preinstalado por defecto en Debian</span></div>
+      <div><span class="prompt">$</span> <span class="cmd">git config --global core.editor "nano"</span></div>
+    </div>
+  </div>
+
+  <h2>Verifica tu configuración</h2>
+
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="terminal-title">bash</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="prompt">$</span> <span class="cmd">git config --list</span></div>
+      <div><span class="out">user.name=Linus Torvals</span></div>
+      <div><span class="out">user.email=linus@mail.net</span></div>
+      <div><span class="out">init.defaultbranch=main</span></div>
+      <div><span class="out">core.editor=nano</span></div>
+    </div>
+  </div>
+
+  <p>Si quieres ver un valor específico:</p>
+
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="terminal-title">bash</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="prompt">$</span> <span class="cmd">git config user.name</span></div>
+      <div><span class="out">Linus Torvals</span></div>
+      <div><span class="prompt">$</span> <span class="cmd">git config user.email</span></div>
+      <div><span class="out">linus@mail.net</span></div>
+    </div>
+  </div>
+
+  <footer>
+    Fuente: <a href="https://www.cursosdesarrolloweb.es/curso-desarrollo-web/git">cursosdesarrolloweb.es</a>
+  </footer>
+
+</body>
+</html>   

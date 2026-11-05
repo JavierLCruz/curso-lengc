@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 2: Control de versiones con Git | Curso de C</title>
+    <!-- Subimos un nivel (../) para encontrar la carpeta css -->
+    <link rel="stylesheet" href="../css/estilo-terminal.css">
+</head>
+<body>
+
+    <p><a href="../index.html">← Volver al Índice</a></p>
+
+    <h1>Capítulo 2: Git, control de versiones</h1>
+    <p>INSTALACION EN LINUX
+
+En distribuciones basadas en Debian/Ubuntu:
+
+<code>sudo apt install git</code>
+
+Verificacion de la instalacion
+Sea cual sea tu sistema operativo, abre la terminal y ejecuta.
+
+<code>git --version</code>
+
+Deberias ver algo como:
+
+<code>git version 2.43.0</code>
+
+Si ves un mumero de version, Git esta instalado. El numero exacto no importa mucho, cualquier version reciente funciona perfectamente:</p>
+
+    <!-- La ventana de la terminal -->
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">config_Git.sh</span>
+        </div>
+        <div class="terminal-body">
+            <!-- El script insertará las letras dentro del span "typing-text" -->
+            <span id="typing-text"></span><span class="cursor">|</span>
+        </div>
+    </div>
+
+    <!-- AQUÍ ESCRIBES TU CÓDIGO NORMALMENTE. 
+         Está oculto (display: none), el usuario no lo ve directamente, 
+         pero el JavaScript lo lee de aquí para hacer el efecto. -->
+    <pre id="codigo-oculto" style="display: none;">sudo apt install git
+git --version
+git version 2.43.0
+git config --global user.name "Linus Torvals"
+git config --global user.email "linus@mail.net"
+    </pre>
+
+    <h2>¿Qué acaba de pasar?</h2>
+    <ul>
+        <li><code>#include &lt;stdio.h&gt;</code>: Importa las herramientas para Entrada y Salida (Standard Input/Output).</li>
+        <li><code>int main()</code>: Es el punto de arranque de cualquier programa en C.</li>
+    </ul>
+
+    <!-- Subimos un nivel (../) para encontrar la carpeta js -->
+    <script src="../js/maquina-escribir.js"></script>
+
+</body>
+</html>

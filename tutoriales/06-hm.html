@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal</title>
+  <style>
+    body {
+      background: #1a1a2e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .terminal-window {
+      width: 600px;
+      background: #0d1117;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 14px;
+    }
+
+    .terminal-header {
+      background: #161b22;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-dot.red    { background: #ff5f57; }
+    .terminal-dot.yellow { background: #febc2e; }
+    .terminal-dot.green  { background: #28c840; }
+
+    .terminal-title {
+      margin-left: auto;
+      margin-right: auto;
+      color: #8b949e;
+      font-size: 12px;
+    }
+
+    .terminal-body {
+      padding: 16px;
+      color: #c9d1d9;
+      min-height: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .terminal-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .prompt {
+      color: #7ee787;
+    }
+
+    .command {
+      color: #c9d1d9;
+    }
+
+    .output {
+      color: #8b949e;
+      white-space: pre-wrap;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: #c9d1d9;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .terminal-input {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+      border-top: 1px solid #21262d;
+    }
+
+    .terminal-input input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #c9d1d9;
+      font-family: inherit;
+      font-size: inherit;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-window">
+    <!-- Barra superior con los 3 puntos (estilo macOS) -->
+    <div class="terminal-header">
+      <span class="terminal-dot red"></span>
+      <span class="terminal-dot yellow"></span>
+      <span class="terminal-dot green"></span>
+      <span class="terminal-title">user@localhost: ~</span>
+    </div>
+
+    <!-- Área de contenido (comandos + salida) -->
+    <div class="terminal-body" id="terminal-output">
+      <div class="terminal-line">
+        <span class="prompt">user@localhost:~$</span>
+        <span class="command">ls -la</span>
+      </div>
+      <div class="terminal-line">
+        <span class="output">drwxr-xr-x  4 user user 4096 Oct 28 10:00 .
+-rw-r--r--  1 user user  102 Oct 28 10:05 notes.txt
+-rwxr-xr-x  1 user user  256 Oct 27 09:12 script.sh</span>
+      </div>
+      <div class="terminal-line">
+        <span class="prompt">user@localhost:~$</span>
+        <span class="cursor"></span>
+      </div>
+    </div>
+
+    <!-- Campo de entrada -->
+    <div class="terminal-input">
+      <span class="prompt">user@localhost:~$</span>
+      <input type="text" id="terminal-input" autocomplete="off" autofocus>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('terminal-input');
+    const output = document.getElementById('terminal-output');
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const cmd = input.value.trim();
+        if (!cmd) return;
+
+        // Eliminar el cursor de la última línea
+        const cursorLine = output.querySelector('.cursor');
+        if (cursorLine) cursorLine.remove();
+
+        // Agregar la línea del comando
+        const line = document.createElement('div');
+        line.className = 'terminal-line';
+        line.innerHTML = `<span class="prompt">user@localhost:~$</span><span class="command">${cmd}</span>`;
+        output.appendChild(line);
+
+        // Simular respuesta
+        const response = document.createElement('div');
+        response.className = 'terminal-line';
+        response.innerHTML = `<span class="output">Comando ejecutado: ${cmd}</span>`;
+        output.appendChild(response);
+
+        // Nueva línea con cursor
+        const newLine = document.createElement('div');
+        newLine.className = 'terminal-line';
+        newLine.innerHTML = `<span class="prompt">user@localhost:~$</span><span class="cursor"></span>`;
+        output.appendChild(newLine);
+
+        input.value = '';
+        output.scrollTop = output.scrollHeight;
+      }
+    });
+  </script>
+
+</body>
+</html>   
